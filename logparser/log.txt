@@ -1,0 +1,5 @@
+golang.org 10
+google.com.mx 123
+amazon.com.mx 354
+facebook.com 22
+advancedprogramming.net 977
