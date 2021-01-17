@@ -20,7 +20,7 @@ func main() {
 	c := make(chan string) // Creating a new channel of type string, it means that this channel can only transport string type things
 
 	for _, link := range links {
-		go checkLink(link, c) // New go routine
+		go checkLink(link, c) // New go routine, here we are just calling the go routine, this function writes to the channel
 	}
 
 	/*
@@ -43,7 +43,7 @@ func main() {
 			time.Sleep(time.Second)
 
 		*/
-		// Using function literals
+		// Using function literals (Like Java lambdas)
 		go func(link string) { // Name of the argument passed is link
 			time.Sleep(time.Second * 5)
 			checkLink(link, c) // Use the link variable
