@@ -55,9 +55,9 @@ func checkLink(link string, c chan string) { // We need to add the parameter cha
 	_, err := http.Get(link)
 	if err != nil {
 		fmt.Println(link + " might be down!")
-		c <- link // Sending a message to a channel
+		c <- link // Sending a message to a channel (sending the url back)
 		return
 	}
 	fmt.Println(link + " is up!")
-	c <- link // Sending a message to a channel
+	c <- link // Sending a message to a channel (sending the url back)
 }
