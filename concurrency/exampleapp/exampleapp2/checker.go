@@ -16,14 +16,14 @@ func main() {
 		"http://amazon.com",
 	}
 
-	c := make(chan string)
+	c := make(chan string, 5)
 
 	for {
 		for x := range links {
 			go checkLink(links[x], c)
 		}
 
-		for i := 0; i < len(links); i++ {
+		for range links {
 			fmt.Println(<-c)
 		}
 		time.Sleep(time.Second * 5)
