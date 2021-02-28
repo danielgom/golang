@@ -12,6 +12,8 @@ func main() {
 	var data int
 	var wg sync.WaitGroup
 
+	// Remember to pass wait group value as a pointer
+
 	// Add a new go routine
 	wg.Add(1)
 	go func() {
@@ -41,6 +43,8 @@ func main() {
 	fmt.Println(answer1)
 
 }
+
+// Passing the waitGroup value as a pointer allows us to avoid creating a copy of the waitGroup
 
 func worker(id int, wg *sync.WaitGroup) {
 	defer wg.Done() // Remember that this is run after everything else is run

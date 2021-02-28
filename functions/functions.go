@@ -22,8 +22,9 @@ func main() {
 
 	daniel := person{
 		name:    "Daniel Gomez Alvarez",
-		numbers: []int{1, 2, 3, 4, 5},
+		numbers: make([]int, 0, 20),
 	}
+	daniel.numbers = append(daniel.numbers, 1, 2, 3, 4, 5)
 	fmt.Println("Before func (slice): ", daniel)
 	changeStructWithSlice(daniel)
 	fmt.Println("After func (slice): ", daniel)
@@ -65,6 +66,7 @@ func main() {
 
 func changeStructWithSlice(p person) { // Whenever we want to change a slice with full capacity we need to return it
 	p.numbers = append(p.numbers, []int{7, 8, 9, 10}...)
+	p.name = "change name"
 	fmt.Println("This is the copy in the func (slice): ", p)
 }
 
@@ -75,6 +77,7 @@ func changeStructWithMap(pro professional) {
 
 func changeStructWithSliceReturn(p person) person {
 	p.numbers = append(p.numbers, 7, 8, 9, 10)
+	p.name = "cambio de nombre"
 	fmt.Println("This is the copy in the func (slice): ", p)
 	return p
 }

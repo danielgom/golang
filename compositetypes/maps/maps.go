@@ -57,7 +57,7 @@ func main() {
 
 	if val, exists := intMap[10]; exists {
 		fmt.Println("value: ", val, " exists")
-	} else{
+	} else {
 		fmt.Println("It does not exists")
 	}
 

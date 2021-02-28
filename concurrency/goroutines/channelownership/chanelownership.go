@@ -30,14 +30,15 @@ func main() {
 	consumer(ch)
 
 	// Trying to do a filter of int
-	filter := func(a int) bool {
-		return a%2 == 0
-	}
 
 	ns := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	filtered := Filter(ns, func(b int) bool {
 		return b%2 == 0
 	})
+
+	filter := func(a int) bool {
+		return a%2 == 0
+	}
 
 	filtered2 := Filter(ns, filter)
 

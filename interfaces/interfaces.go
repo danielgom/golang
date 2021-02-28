@@ -89,10 +89,10 @@ func main() {
 	// We need the & since product uses pointers on the receivers
 
 	store2 := list{
-		&book{product: product{title: "mobydick", price: 19.99}, published: "733622400"}, // Published is an empty interface type interface{}
-		&book{product: product{title: "the last breath", price: 29.99}, published: 118281600},                // therefore we can have anything there like ints, strings and booleans
-		&book{product: product{title: "It", price: 9.99}, published: false},                                  // or any other value
-		&book{product: product{title: "It", price: 9.99}, published: nil},                                    // it can be nil as well
+		&book{product: product{title: "mobydick", price: 19.99}, published: "733622400"},      // Published is an empty interface type interface{}
+		&book{product: product{title: "the last breath", price: 29.99}, published: 118281600}, // therefore we can have anything there like ints, strings and booleans
+		&book{product: product{title: "It", price: 9.99}, published: false},                   // or any other value
+		&book{product: product{title: "It", price: 9.99}, published: nil},                     // it can be nil as well
 		&game{product: product{title: "Diablo 4", price: 99.99}},
 		&game{product: product{title: "Cybeer cg", price: 199.99}},
 		&puzzle{product{title: "Interesting", price: 12.49}},
@@ -112,4 +112,15 @@ func main() {
 
 	// In the end we did not have to change anything in the item type interface since these types, book, game, toy and puzzle
 	// have the product type, and this type implicitly implements the item interface with the print and the discount methods
+
+	fmt.Println()
+	fmt.Println()
+	fmt.Println()
+
+	var newItem item
+	newItem = &book{product: product{title: "It", price: 9.99}, published: false}
+	newItem.print()
+	b2 := newItem.(*book)
+	b2.discount(.20)
+	b2.print()
 }

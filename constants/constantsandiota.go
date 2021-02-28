@@ -128,4 +128,6 @@ func main() {
 	// Naming conventions in Golang
 	fmt.Println(time.Duration(1))
 
+	nonRep := []int{1, 2, 3, 4, 5, 5, 5}
+	fmt.Println(nonRep)
 }

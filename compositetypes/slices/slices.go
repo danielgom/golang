@@ -3,11 +3,10 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"os"
 	"sort"
-	"strconv"
 	"strings"
 	"time"
+	"unicode/utf8"
 )
 
 func main() {
@@ -54,7 +53,8 @@ func main() {
 
 	rand.Seed(time.Now().UnixNano())
 
-	maxVal, _ := strconv.Atoi(os.Args[1])
+	//maxVal, _ := strconv.Atoi(os.Args[1])
+	maxVal := 22
 
 	var uniques []int
 
@@ -106,8 +106,8 @@ loop:
 	fmt.Println(un)
 
 	ints := append([]int8{}, 2, 3, 4, 5, 6, 7, 8)
-	intsArr := []int64{1,2,3,4,5}
-	strArr := []string{"a","b","c","d"}
+	intsArr := []int64{1, 2, 3, 4, 5}
+	strArr := []string{"a", "b", "c", "d"}
 
 	weird := append([]byte("hello"), "world"...) // Same as before , all values, since it is a byte, every letter in
 	// world is going to be converted to byte that's why we need to use "world"...
@@ -147,4 +147,23 @@ loop:
 
 	nextT := "Hello how are you"
 	fmt.Println(strings.Fields(nextT))
+
+	lines := "trimming spaces ÷÷∞¢#¢©√ß∫∫®€æ∑å∫∂œæ€Ωå∫∂  "
+	fmt.Println(lines + "nope")
+	fmt.Println(strings.TrimSpace(lines) + "nope")
+
+	fmt.Println(len(lines))
+	fmt.Println(utf8.RuneCountInString(lines))
+
+	check1 := make([]int, 0, 10)
+	fmt.Println(cap(check1))
+	fmt.Println(len(check1))
+	fmt.Println(check1[0:cap(check1)])
+	fundModSl(&check1)
+	fmt.Println(check1)
+
+}
+
+func fundModSl(sl *[]int) {
+	*sl = append(*sl, 10, 20, 30)
 }
