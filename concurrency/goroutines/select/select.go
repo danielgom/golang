@@ -12,13 +12,14 @@ func main() {
 		really powerful feature of golang language
 	*/
 
+
 	// Creation of channels
 	c1 := make(chan string)
 	c2 := make(chan string)
 
 	// Execution of an operation within channels
 	go func() {
-		time.Sleep(time.Second * 1) // simulate a ~1 second operation
+		time.Sleep(time.Second * 3) // simulate a ~1 second operation
 		c1 <- "Operation one"
 	}()
 
@@ -44,18 +45,54 @@ func main() {
 		}
 	}
 
-	whatAmI := func(i interface{}) {
-		switch t := i.(type) {
-		case bool:
-			fmt.Println("I'm a bool")
-		case int:
-			fmt.Println("I'm an int")
-		default:
-			fmt.Printf("Don't know type %T\n", t)
+	/*
+		Infinite example of using channels and select
+	*/
+
+	ch1 := make(chan string)
+	ch2 := make(chan string)
+
+	go func() {
+		for {
+			time.Sleep(time.Second / 2)
+			ch1 <- "payment operation"
+		}
+	}()
+	go func() {
+		for {
+			time.Sleep(time.Second)
+			ch2 <- "check operation"
+		}
+	}()
+
+	for  {
+		select {
+		case msg := <-ch1:
+			fmt.Println(msg)
+		case msg := <-ch2:
+			fmt.Println(msg)
 		}
 	}
-	whatAmI(true)
-	whatAmI(1)
-	whatAmI("hey")
+
+
+
+	/*
+
+
+		whatAmI := func(i interface{}) {
+			switch t := i.(type) {
+			case bool:
+				fmt.Println("I'm a bool")
+			case int:
+				fmt.Println("I'm an int")
+			default:
+				fmt.Printf("Don't know type %T\n", t)
+			}
+		}
+		whatAmI(true)
+		whatAmI(1)
+		whatAmI("hey")
+
+	*/
 
 }

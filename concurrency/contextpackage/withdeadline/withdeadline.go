@@ -10,7 +10,7 @@ type data struct {
 	string
 }
 
-const duration = 980 * time.Millisecond
+const duration = 1020 * time.Millisecond
 
 func main() {
 

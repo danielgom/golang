@@ -98,4 +98,31 @@ func main() {
 	//fmt.Println(exit + exit2) // cannot do this, since these are different
 	fmt.Println(int64(exit) + int64(exit2))
 	//fmt.Println(exit == talvez)
+
+	testSlice := []string{"hola", "como", "estas", "?"}
+	fmt.Println(testSlice)
+
+	var testInts []int
+	fmt.Println(testInts)
+	testInts = append(testInts, []int{1, 2, 3, 4}...)
+	fmt.Println(testInts)
+
+	testSplit := testInts[0:3]
+	fmt.Println(testSplit)
+	fmt.Println(cap(testSplit))
+	fmt.Println(testSplit[0:cap(testSplit)])
+
+
+	testSplit[0] = 22
+	fmt.Println(testInts)
+
+
+	testCopy := make([]int, len(testInts))
+	copy(testCopy, testInts)
+	fmt.Println(testCopy)
+	testCopy[1] = 33
+	fmt.Println(testInts)
+	fmt.Println(testCopy)
+
+
 }

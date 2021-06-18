@@ -53,10 +53,26 @@ func main() {
 		defer wg.Done()
 		add(&n3, &mu)
 	}()
-	go add(&n3, &mu)
+	add(&n3, &mu)
+	add(&n3, &mu)
+	add(&n3, &mu)
 
 	wg.Wait()
 	fmt.Println(n3)
+
+	/*
+		Fixing the issue with only mutex
+	*/
+
+	var mutex sync.Mutex
+
+	try := 0
+	go add(&try, &mutex)
+	go add(&try, &mutex)
+	go add(&try, &mutex)
+	go add(&try, &mutex)
+
+	fmt.Println(try)
 
 }
 

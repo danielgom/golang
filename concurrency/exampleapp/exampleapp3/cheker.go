@@ -24,7 +24,15 @@ func main() {
 	for {
 		for x := range links {
 			wg.Add(1)
-			go checkLink(links[x], &wg)
+			//go checkLink(links[x], &wg)
+			go func(link string, wg *sync.WaitGroup) {
+				defer wg.Done()
+				_, err := http.Get(link)
+				if err != nil {
+					fmt.Println(link + " might be down")
+				}
+				fmt.Println(link + " is up")
+			}(links[x], &wg)
 		}
 		wg.Wait()
 		time.Sleep(time.Second * 5)

@@ -162,8 +162,55 @@ loop:
 	fundModSl(&check1)
 	fmt.Println(check1)
 
+	newsl := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	testing := func(a int) bool {
+		return a%2 == 0
+	}
+
+	fmt.Println(Filter(newsl, func(a int) bool {
+		return a%2 == 0
+	}))
+
+	fmt.Println(Filter(newsl, testing))
+
+	fmt.Println(FilterToMap(newsl, func(a int) bool {
+		return a % 2 == 0
+	}))
+
+	c := complex(22.22, 33.54)
+	fmt.Println(c)
+
+	fmt.Println(imag(c))
+	fmt.Println(real(c))
+
+
+
 }
 
 func fundModSl(sl *[]int) {
 	*sl = append(*sl, 10, 20, 30)
+}
+
+func Filter(sl []int, b func(a int) bool) []int {
+	res := make([]int, 0)
+
+	for i := range sl {
+		if b(sl[i]) {
+			res = append(res, sl[i])
+		}
+	}
+	return res
+}
+
+func FilterToMap(sl []int, b func(a int) bool) map[int]int {
+
+	m := make(map[int]int, 0)
+
+	for i := range sl {
+		if b(sl[i]) {
+			m[sl[i]] = sl[i] * 2
+		}
+	}
+	return m
 }

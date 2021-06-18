@@ -20,7 +20,14 @@ func main() {
 
 	for {
 		for x := range links {
-			go checkLink(links[x], c)
+			//go checkLink(links[x], c)
+			go func(link string, c chan<- string) {
+				_, err := http.Get(link)
+				if err != nil {
+					c <- link + " may be down"
+				}
+				c <- link + " is up"
+			}(links[x], c)
 		}
 
 		for i := 0; i < cap(c); i++ {
@@ -30,7 +37,7 @@ func main() {
 	}
 }
 
-func checkLink(link string, c chan string) {
+func checkLink(link string, c chan<- string) {
 	_, err := http.Get(link)
 	if err != nil {
 		c <- link + " might be down"

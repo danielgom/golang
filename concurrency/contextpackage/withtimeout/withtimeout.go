@@ -11,17 +11,16 @@ import (
 
 func main() {
 
-	req, err := http.NewRequest("GET", "https://www.google.com", nil)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Millisecond*200)
+	defer cancel()
+	req, err := http.NewRequestWithContext(ctx,
+		http.MethodGet, "https://www.google.com", nil)
+
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 500*time.Millisecond) // If the server does not respond within 100
-	// milliseconds , then it is going to throw an error
-
-	defer cancel()
-
-	resp, err := http.DefaultClient.Do(req.WithContext(ctx))
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		log.Println("ERROR", err)
 		return

@@ -6,7 +6,6 @@ import (
 	"sync"
 	"sync/atomic"
 )
-
 func main() {
 
 	/*
@@ -22,7 +21,7 @@ func main() {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			for c := 0; c < 1000; c++ {
+			for c := 0; c < 100; c++ {
 				//counter++ Notice that we are not simply adding one to the counter
 				atomic.AddUint64(&counter, 1) // We are passing the value as a reference and telling to add 1 to the unit
 				// Atomic provides a safer way to do concurrent operations
@@ -38,5 +37,4 @@ func main() {
 		hence the result of these operations may be corrupted, that's why we need a safe way to run these operations concurrently
 		NOTE: We can use Mutex however, we would not be concurrent, using atomic can change our result
 	*/
-
 }

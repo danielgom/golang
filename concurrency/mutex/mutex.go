@@ -16,8 +16,8 @@ func main() {
 	var mu sync.Mutex
 	var wg sync.WaitGroup
 
-	wg.Add(102)
 	for i := 1; i <= 102; i++ {
+		wg.Add(1)
 		go func() {
 			defer wg.Done()
 			deposit(&balance, 1, &mu)

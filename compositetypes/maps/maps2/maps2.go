@@ -33,23 +33,22 @@ func main() {
 		102: {},
 	}
 
-	fmt.Printf("%#v\n",phones)
-	fmt.Printf("%#v\n",products)
-	fmt.Printf("%#v\n",multiPhones)
-	fmt.Printf("%#v\n",basket)
+	fmt.Printf("%#v\n", phones)
+	fmt.Printf("%#v\n", products)
+	fmt.Printf("%#v\n", multiPhones)
+	fmt.Printf("%#v\n", basket)
 
 	fmt.Printf("%T\n", phones["dulin"]) // slices
 	fmt.Println(phones["dulin"])
 
 	if !products[617841573] {
 		fmt.Println("Value exists")
-	} else{
+	} else {
 		fmt.Println("It does not exists")
 	}
 
 	fmt.Println(multiPhones["greco"][1])
 	fmt.Println(basket[101][576872813])
-	
 
 	/*
 		basket:

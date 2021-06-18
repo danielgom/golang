@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 )
 
 func main() {
@@ -34,6 +33,4 @@ func main() {
 		fmt.Println("Received: ", v)
 	}
 
-	perm := rand.Perm(100)
-	fmt.Println(perm)
 }

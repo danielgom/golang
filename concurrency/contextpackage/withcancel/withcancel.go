@@ -24,7 +24,6 @@ func main() {
 }
 
 func generator(ctx context.Context) <-chan int {
-
 	ch := make(chan int)
 	n := 1
 	go func() {
