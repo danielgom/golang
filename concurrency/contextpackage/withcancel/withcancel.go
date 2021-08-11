@@ -20,7 +20,6 @@ func main() {
 			cancel() // Send the cancel signal
 		}
 	}
-
 }
 
 func generator(ctx context.Context) <-chan int {
