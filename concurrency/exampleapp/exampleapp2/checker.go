@@ -33,10 +33,12 @@ func main() {
 		for i := 0; i < cap(c); i++ {
 			fmt.Println(<-c)
 		}
+
 		time.Sleep(time.Second * 5)
 	}
 }
 
+/*
 func checkLink(link string, c chan<- string) {
 	_, err := http.Get(link)
 	if err != nil {
@@ -44,3 +46,5 @@ func checkLink(link string, c chan<- string) {
 	}
 	c <- link + " is up"
 }
+
+*/

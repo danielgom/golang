@@ -10,7 +10,7 @@ type timestamp struct {
 }
 
 func (ts timestamp) String() string { // Notice that we are not using ts.Time.IsZero, this is because Time is an anonymous type
-	// So therefore there is no need to get the ts.Time
+	// So there is no need to get the ts.Time
 	// If we add a name to time.Time then we would need to do something like ->>> ts.<name>.IsZero
 	if ts.IsZero() {
 		return "unknown"

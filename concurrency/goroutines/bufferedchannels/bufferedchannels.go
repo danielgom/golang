@@ -26,7 +26,6 @@ func main() {
 		are working on sending information to the channel this code is running in the main routine
 	*/
 
-
 	fmt.Println("hello")
 	fmt.Println("how are you?")
 

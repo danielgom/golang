@@ -16,7 +16,7 @@ func main() {
 
 	for n := range generator(ctx) {
 		fmt.Println(n)
-		if n == 100 {
+		if n == 1000 {
 			cancel() // Send the cancel signal
 		}
 	}

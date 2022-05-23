@@ -9,11 +9,11 @@ import (
 func main() {
 
 	links := []string{
-		"http://google.com",
-		"http://facebook.com",
-		"http://stackoverflow.com",
-		"http://golang.org",
-		"http://amazon.com",
+		"https://google.com",
+		"https://facebook.com",
+		"https://stackoverflow.com",
+		"https://golang.org",
+		"https://amazon.com",
 	}
 
 	// To communicate between go routines we need to create channels

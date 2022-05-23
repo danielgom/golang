@@ -45,7 +45,7 @@ func main() {
 
 	fmt.Println("Half2: ", half2)
 	fmt.Println("Half2 length: ", len(half2)) // len is 3 since we can only get 3 numbers [0:3]
-	fmt.Println("Half2 capacity", cap(half2)) // This is the greate change
+	fmt.Println("Half2 capacity", cap(half2)) // This is the great change
 
 	fmt.Println("Half2 after appending: ", half2)         // [10 20 30]
 	fmt.Println("Sliceable2 after appending", sliceable2) // [10 20 30 40 50] since we saw that capacity is 3 and our length was 3
@@ -101,10 +101,10 @@ func main() {
 
 	sec := make([]float64, len(un)) /// Make also creates a new slice (already known)
 
-	copy(sec, un)    // First we copy , this happens in plance not like append
+	copy(sec, un)    // First we copy , this happens in place not like append
 	fmt.Println(sec) // Same output as
 
-	// Both of them have different backing arrays, lets check what happends if we try to copy to a slice that has a lower capacity
+	// Both of them have different backing arrays, lets check what happens if we try to copy to a slice that has a lower capacity
 
 	bigCap := []int{10, 20, 30, 40, 50}
 	lowCap := make([]int, cap(bigCap))            //Capacity 5
@@ -114,14 +114,14 @@ func main() {
 	// Better way to copy an array in my opinion
 
 	letsCp := []int64{51, 52, 53, 54, 56, 57, 58}
-	newCp := append([]int64(nil), letsCp...) // Create a nil slice of yourtype choice, remember that length is 0 and
+	newCp := append([]int64(nil), letsCp...) // Create a nil slice of your type choice, remember that length is 0 and
 	// This line above creates new backing arrays for every few things added , this because we know that capacity is 0
 	// and each time capacity is surpassed it just doubles creating a new backing array
 
 	newCp[4] = 5000
 	fmt.Println(letsCp)
 	fmt.Println(newCp) // Both copy methods are going to be creating a new backing array, the only way to
-	// modify backing array from a slice, is creating a slice from a slice and then chaning values within capacity
+	// modify backing array from a slice, is creating a slice from a slice and then changing values within capacity
 
 	//To avoid the problem that was mentioned above ,we can do the following
 	//From the same letsCp slice
@@ -142,6 +142,12 @@ func main() {
 	fmt.Println(nums2)
 
 	shapes := []string{"|", "/", "-", "\\", "|", "/", "-", "\\"}
+
+	check := make([]int, 5, 10)
+	check = append(check, 2)
+	fmt.Println(check)
+	fmt.Println(len(check))
+	fmt.Println(cap(check))
 
 	for x := 0; ; {
 		fmt.Printf("\rPlease wait, processing... %s", shapes[x])
