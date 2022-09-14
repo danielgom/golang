@@ -65,6 +65,7 @@
 ​
 ### Unit Testing and Benchmarking
 [Test, test, test](https://www.digitalocean.com/community/tutorials/how-to-write-unit-tests-in-go-using-go-test-and-the-testing-package)
+Please consider using this in order to learn testing [Learn go with tests](https://quii.gitbook.io/learn-go-with-tests/)
 [Optional BDD](https://github.com/go-bdd/gobdd)
 ​
 ### First list of exercises
@@ -102,3 +103,4 @@ CheatSheets
 [Everything you need](https://go.dev/doc/effective_go)
 [GoRoadMap](https://github.com/Alikhll/golang-developer-roadmap)
 [GoByExample](https://gobyexample.com/)
+
