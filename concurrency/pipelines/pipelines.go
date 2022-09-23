@@ -17,7 +17,7 @@ func main() {
 
 	// TODO generator() -> square() -> print
 	rand.Seed(time.Now().Unix())
-	ch := generator(rand.Perm(100)...)
+	ch := generator(rand.Perm(101)...)
 
 	out := square(ch)
 

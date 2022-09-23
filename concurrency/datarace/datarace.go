@@ -14,7 +14,7 @@ func main() {
 
 	/*
 		Following example shows a variable n which starting value is 0, we are adding +1 in the go routine and in the
-		main go routine, we can have multiple results of this, we would like to have a result of 2 however, that does
+		main go routine, we can have multiple results of this, we would like to have a result of 2, however, that does
 		not happen frequently
 	*/
 	n := 0
