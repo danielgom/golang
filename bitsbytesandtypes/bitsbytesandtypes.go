@@ -2,19 +2,22 @@ package main
 
 import (
 	"fmt"
-	"github.com/dgomez/learngo/first/explain/numbersandstrings/weights"
 	"math"
 	"strings"
 	"time"
+
+	"github.com/dgomez/learngo/first/explain/numbersandstrings/weights"
 )
 
-type gram float64
-type ounce float64
+type (
+	gram  float64
+	ounce float64
+)
 
 func main() {
 	fmt.Printf("%04b", 3)
 
-	//var testSigned int8 = 128 // cant do this signed
+	// var testSigned int8 = 128 // cant do this signed
 	var test uint8 = 128 // can, since it is unsigned
 	fmt.Println(test)
 	var nope int = 23
@@ -39,7 +42,7 @@ func main() {
 
 	var g gram = 1000
 	var o ounce
-	//o = g * 0.35742 //cant since g is gram and o is ounce
+	// o = g * 0.35742 //cant since g is gram and o is ounce
 	o = ounce(g) * 0.03574 // need to convert
 	fmt.Printf("%g grams in %.2f ounces\n", g, o)
 
@@ -68,7 +71,7 @@ func main() {
 	fmt.Println(time.Duration(10))
 
 	type MyAnotherGram weights.Gram
-	var grammsss = MyAnotherGram(weights.Gram(10))
+	grammsss := MyAnotherGram(weights.Gram(10))
 	sumInt := Ton(weights.Kilogram(10)) + Ton(grammsss)
 	fmt.Println(sumInt)
 
@@ -112,10 +115,8 @@ func main() {
 	fmt.Println(cap(testSplit))
 	fmt.Println(testSplit[0:cap(testSplit)])
 
-
 	testSplit[0] = 22
 	fmt.Println(testInts)
-
 
 	testCopy := make([]int, len(testInts))
 	copy(testCopy, testInts)
@@ -123,6 +124,5 @@ func main() {
 	testCopy[1] = 33
 	fmt.Println(testInts)
 	fmt.Println(testCopy)
-
 
 }

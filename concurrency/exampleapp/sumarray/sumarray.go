@@ -47,7 +47,6 @@ func main() {
 
 	// Retrieve
 
-
 	var result int64
 
 	for x := 0; x < 5; x++ {
@@ -55,15 +54,15 @@ func main() {
 	}
 	fmt.Println(result)
 	/*
-	ts := 0
-	for i := 0; i < cap(c); i++ {
-		n := <-c
-		fmt.Println(n)
-		ts += int(n)
-	}
-	fmt.Println(ts)
+		ts := 0
+		for i := 0; i < cap(c); i++ {
+			n := <-c
+			fmt.Println(n)
+			ts += int(n)
+		}
+		fmt.Println(ts)
 
-	 */
+	*/
 
 }
 
