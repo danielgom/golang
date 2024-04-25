@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"maps"
 	"os"
-	"reflect"
 )
 
 func main() {
@@ -95,9 +95,9 @@ func main() {
 	fmt.Println(secondMap)
 	fmt.Println(thirdMap)
 
-	fmt.Println("Is map 1 equal to map 2?: ", reflect.DeepEqual(firstMap, secondMap))
-	fmt.Println("Is map 1 equal to map 3?: ", reflect.DeepEqual(firstMap, thirdMap))
-	fmt.Println("Is map 2 equal to map 3?: ", reflect.DeepEqual(secondMap, thirdMap))
+	fmt.Println("Is map 1 equal to map 2?: ", maps.Equal(firstMap, secondMap))
+	fmt.Println("Is map 1 equal to map 3?: ", maps.Equal(firstMap, thirdMap))
+	fmt.Println("Is map 2 equal to map 3?: ", maps.Equal(secondMap, thirdMap))
 
 	// Map works the same way as slices, slices contain the pointer to the backing array
 	// Map contains the pointer to the actual values of the map

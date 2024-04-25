@@ -5,18 +5,24 @@ import (
 	"errors"
 	"golang.org/x/sync/semaphore"
 	"log"
+	"math/rand/v2"
 	"runtime"
+	"strconv"
 	"strings"
 	"sync"
 )
 
 func main() {
-	src := []string{"FOO", "BAR", "BAX"}
+	perm := rand.Perm(2 << 19)
+	permString := make([]string, 0, len(perm))
+	for _, p := range perm {
+		permString = append(permString, strconv.Itoa(p))
+	}
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	producerChan, err := producer(ctx, src)
+	producerChan, err := producer(ctx, permString)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,7 +31,7 @@ func main() {
 	step2results, step2errors := step(ctx, step1results, transformB)
 	allErrors := merge(ctx, step1errors, step2errors)
 
-	sink(ctx, cancel, step2results, allErrors)
+	sink(ctx, step2results, allErrors)
 }
 
 func producer(ctx context.Context, strings []string) (<-chan string, error) {
@@ -38,6 +44,7 @@ func producer(ctx context.Context, strings []string) (<-chan string, error) {
 			case <-ctx.Done():
 				return
 			case outChan <- s:
+				log.Println("sent to the channel", s)
 			}
 		}
 	}()
@@ -45,7 +52,7 @@ func producer(ctx context.Context, strings []string) (<-chan string, error) {
 	return outChan, nil
 }
 
-func sink(ctx context.Context, cancel context.CancelFunc, values <-chan string, errors <-chan error) {
+func sink(ctx context.Context, values <-chan string, errors <-chan error) {
 	for {
 		select {
 		case <-ctx.Done():

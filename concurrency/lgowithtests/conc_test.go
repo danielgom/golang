@@ -1,7 +1,7 @@
 package lgowithtests
 
 import (
-	"reflect"
+	"maps"
 	"testing"
 	"time"
 )
@@ -28,7 +28,7 @@ func TestCheckWebsites(t *testing.T) {
 
 	got := CheckWebsites(mockWebsiteChecker, websites)
 
-	if !reflect.DeepEqual(want, got) {
+	if !maps.Equal(want, got) {
 		t.Fatalf("wanted %v, got %v", want, got)
 	}
 }
