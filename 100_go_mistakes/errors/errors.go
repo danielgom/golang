@@ -7,9 +7,12 @@ import (
 
 var myMainError = errors.New("this is the main error")
 
-func main() {
-	fmt.Println("hello there")
+type this struct {
+	first  string
+	second string
+}
 
+func main() {
 	mainError := doSomethingWithErr()
 	fmt.Println(mainError)
 
@@ -23,7 +26,9 @@ func main() {
 
 	// Even if we wrap multiple times, the error is still the main error
 	fmt.Println(errors.Is(errors.Unwrap(doubleWrappedError), mainError)) // true
-	fmt.Println(errors.Is(doubleWrappedError, mainError))                // true
+	fmt.Println(doubleWrappedError)
+	fmt.Println(mainError)
+	fmt.Println(errors.Is(doubleWrappedError, mainError)) // true
 
 	unwrappedError := noWrapTheError()
 	fmt.Println(errors.Unwrap(unwrappedError)) // not wrapped, nothing to be shown
