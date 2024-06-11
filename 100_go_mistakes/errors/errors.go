@@ -35,6 +35,11 @@ func main() {
 
 	fmt.Println(errors.Is(errors.Unwrap(unwrappedError), mainError)) // false
 	fmt.Println(errors.Is(unwrappedError, mainError))                // false
+
+	// Joined errors never get wrapped
+	joinedError := errors.Join(myMainError, fmt.Errorf("this is another error"))
+	fmt.Println(joinedError)
+	fmt.Println(errors.Is(myMainError, joinedError))
 }
 
 func doSomethingWithErr() error {
@@ -44,7 +49,7 @@ func doSomethingWithErr() error {
 func wrapTheError() error {
 	err := doSomethingWithErr()
 	if err != nil {
-		return fmt.Errorf("something failed: %w", err) // wrapped
+		return fmt.Errorf("something failed: %w", myMainError) // wrapped
 	}
 
 	return err

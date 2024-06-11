@@ -167,8 +167,23 @@ func main() {
 		v = "empty"
 		fmt.Println(v)
 	}
-	fmt.Println(testFor) // same as before  [Hello this is  a  for test]
+	fmt.Println(testFor)  // same as before  [Hello this is  a  for test]
 	fmt.Println(testFor2) // [Hello this is  a  for test] (copied from testFor)
+
+	// Appending two slices, one non-nil and nil
+
+	myFirstSlice := []int{1, 2, 3}
+	var mySecondSlice []int
+
+	fmt.Println(append(myFirstSlice, mySecondSlice...))
+
+	var myFirstSliceNil []int
+	var mySecondSliceNil []int
+
+	fmt.Println(myFirstSliceNil == nil)
+	fmt.Println(mySecondSliceNil == nil)
+	fmt.Println(append(myFirstSliceNil, mySecondSliceNil...) == nil)
+	fmt.Println(append(myFirstSliceNil, mySecondSliceNil...))
 }
 
 /*
