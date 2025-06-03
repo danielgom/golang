@@ -1,0 +1,38 @@
+[general]
+live_config_reload = true
+
+[cursor]
+[cursor.style]
+shape = 'Beam'
+
+[cursor.vi_mode_style]
+shape = 'Beam'
+
+[font]
+size = 22.0
+
+[font.normal]
+family = 'JetbrainsMono Nerd Font'
+style = 'Regular'
+
+[keyboard]
+[[keyboard.bindings]]
+chars = "\u001B#"
+key = 'L'
+mods = 'Alt|Shift'
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = 'buttonless'
+dynamic_padding = false
+opacity = 0.85
+
+[window.dimensions]
+columns = 200
+lines = 65
+
+[window.padding]
+x = 18
+y = 16
