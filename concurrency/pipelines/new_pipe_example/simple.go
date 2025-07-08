@@ -61,7 +61,6 @@ func sink(ctx context.Context, values <-chan string, errors <-chan error) {
 		case err := <-errors:
 			if err != nil {
 				log.Println("error", err.Error())
-				//cancel()
 			}
 		case val, ok := <-values:
 			if !ok {
